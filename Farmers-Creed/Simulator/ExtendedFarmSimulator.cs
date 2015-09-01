@@ -44,6 +44,9 @@ namespace FarmersCreed.Simulator
                         farm.Plants.Add(tobacco);
                         break;
                     }
+                default:
+                    base.AddObjectToFarm(inputCommands);   
+                    break;
 
             }
         }
@@ -58,11 +61,11 @@ namespace FarmersCreed.Simulator
             {
                 case "exploit":
                     {
-                       
+
                         if (inputCommands[1] == "animal")
                         {
                             var exploatedItem = GetAnimalById(inputCommands[2]);
-                          farm.Exploit(exploatedItem);
+                            farm.Exploit(exploatedItem);
                             break;
                         }
                         else
@@ -75,10 +78,10 @@ namespace FarmersCreed.Simulator
                     }
 
                 case "feed":
-                {
-                        this.farm.Feed(GetAnimalById(inputCommands[1]),(IEdible)GetProductById(inputCommands[2]),int.Parse(inputCommands[3]));
-                    break;
-                }
+                    {
+                        this.farm.Feed(GetAnimalById(inputCommands[1]), (IEdible)GetProductById(inputCommands[2]), int.Parse(inputCommands[3]));
+                        break;
+                    }
 
                 case "water":
                     {

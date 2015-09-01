@@ -24,7 +24,7 @@ namespace FarmersCreed.Simulator
 
                 if (!input.StartsWith("status"))
                 {
-                   this.farm.UpdateFarmState();
+                    this.farm.UpdateFarmState();
                 }
                 input = Console.ReadLine();
             }
@@ -32,7 +32,7 @@ namespace FarmersCreed.Simulator
 
         protected virtual void ProcessInput(string input)
         {
-            string[] inputCommands = input.Split(new char[] {' '},StringSplitOptions.RemoveEmptyEntries);
+            string[] inputCommands = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             string action = inputCommands[0];
 
@@ -57,7 +57,7 @@ namespace FarmersCreed.Simulator
                     break;
                 default:
                     break;
-            }    
+            }
         }
 
         protected virtual void PrintObjectStatus(string[] inputCommands)
@@ -69,10 +69,13 @@ namespace FarmersCreed.Simulator
                 case "farm":
                     {
                         Console.WriteLine(this.farm);
+
+
                     }
                     break;
                 case "plant":
                     {
+                        //--CherryTree Chereshata, Health: 4, Grown: Yes
                         var plant = this.GetPlantById(inputCommands[2]);
                         Console.WriteLine(plant);
                     }
@@ -81,6 +84,7 @@ namespace FarmersCreed.Simulator
                     {
                         var animal = this.GetAnimalById(inputCommands[2]);
                         Console.WriteLine(animal);
+
                     }
                     break;
                 case "product":
@@ -89,10 +93,20 @@ namespace FarmersCreed.Simulator
                         if (product is Food)
                         {
                             Console.WriteLine(product as Food);
+
+                            //Food GovedoProduct, Quantity: 3, Product Type: Milk, Food Type: Organic, Health Effect: 4
+
                         }
                         else
                         {
-                            Console.WriteLine(product);
+
+                            string type = product.GetType().Name;
+                            string name = product.Id;
+                            int quantity = product.Quantity;
+                            string productType = product.ProductType.ToString();
+                            //--Product TutunProduct, Quantity: 10, Product Type: Tobacco
+
+                            Console.WriteLine("--{0} {1}, Quantity: {2}, Product Type: {3}", type, name, quantity, productType);
                         }
                     }
                     break;
@@ -115,7 +129,7 @@ namespace FarmersCreed.Simulator
                     }
                     break;
 
-            
+
                 default:
                     break;
             }

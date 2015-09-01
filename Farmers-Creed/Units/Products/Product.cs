@@ -33,5 +33,17 @@
             get { return this.productType; }
             set { this.productType = value; }
         }
+
+        public override string ToString()
+        {
+            string type = this.GetType().Name;
+            string name = this.Id;
+            int quantity = this.Quantity;
+            string productType = this.ProductType.ToString();
+            //--Product TutunProduct, Quantity: 10, Product Type: Tobacco
+
+            string result= String.Format("--{0} {1}, Quantity: {2}, Product Type: {3}", type, name, quantity, productType);
+            return result;
+        }
     }
 }

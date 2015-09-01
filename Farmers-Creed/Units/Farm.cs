@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text;
 using FarmersCreed.Units.Plants;
 using FarmersCreed.Units.Products;
 
@@ -13,16 +14,16 @@ namespace FarmersCreed.Units
         public Farm(string id)
             : base(id)
         {
-            this.Plants=new List<Plant>();
-            this.Animals= new List<Animal>();
+            this.Plants = new List<Plant>();
+            this.Animals = new List<Animal>();
             this.Products = new List<Product>();
         }
 
-        public List<Plant> Plants { get; }
+        public List<Plant> Plants { get; set; }
 
-        public List<Animal> Animals { get; }
+        public List<Animal> Animals { get; set; }
 
-        public List<Product> Products { get; }
+        public List<Product> Products { get; set; }
 
         public void AddProduct(Product product)
         {
@@ -53,7 +54,9 @@ namespace FarmersCreed.Units
 
         public void Feed(Animal animal, IEdible edibleProduct, int productQuantity)
         {
+
             animal.Eat(edibleProduct, productQuantity);
+            edibleProduct.Quantity -= productQuantity;
 
         }
 
@@ -68,6 +71,7 @@ namespace FarmersCreed.Units
             {
                 if (plant.IsAlive)
                 {
+
                     if (plant.HasGrown)
                     {
                         plant.Wither();
@@ -79,10 +83,33 @@ namespace FarmersCreed.Units
                 }
             }
 
-            foreach (var animal in Animals.Where(animal=>animal.IsAlive))
+            foreach (var animal in Animals.Where(animal => animal.IsAlive))
             {
                 animal.Starve();
             }
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            var aliveAnimals = this.Animals.Where(animal => animal.IsAlive == true);
+            sb.AppendFormat("--{0} {1}", this.GetType().Name, this.Id).AppendLine();
+            foreach (var animal in aliveAnimals)
+            {
+                sb.AppendLine(animal.ToString());
+            }
+            var aliveplant = this.Plants.Where(plant => plant.IsAlive == true);
+            foreach (var plant in aliveplant)
+            {
+                sb.AppendLine(plant.ToString());
+            }
+            foreach (var product in this.Products)
+            {
+                sb.AppendLine(product.ToString());
+            }
+            return sb.ToString();
+
+        }
     }
+
 }

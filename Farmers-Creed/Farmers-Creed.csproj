@@ -45,7 +45,6 @@
     <Compile Include="Units\Animals\Cow.cs" />
     <Compile Include="Units\Animals\Swine.cs" />
     <Compile Include="Units\Plants\CherryTree.cs" />
-    <Compile Include="Units\Plants\FoodPlant.cs" />
     <Compile Include="Units\Plants\TobaccoPlant.cs" />
     <Compile Include="Units\Animals\Animal.cs" />
     <Compile Include="Simulator\FarmSimulator.cs" />

@@ -1,4 +1,6 @@
-﻿namespace FarmersCreed.Units
+﻿using System.Text;
+
+namespace FarmersCreed.Units
 {
     using System;
 
@@ -27,7 +29,10 @@
 
         public override string ToString()
         {
+            StringBuilder sb = new StringBuilder();
+        
             return String.Format("--{0} {1}", this.GetType().Name, this.id);
+            
         }
     }
 }

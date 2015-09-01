@@ -12,8 +12,9 @@
 
         public bool HasGrown
         {
-            get {
-                if (this.GrowTime<0)
+            get
+            {
+                if (this.GrowTime <= 0)
                 {
                     return true;
                 }
@@ -26,7 +27,8 @@
 
         public int GrowTime
         {
-            get; set;
+            get;
+            set;
         }
 
         public virtual void Water()
@@ -42,6 +44,25 @@
         public virtual void Grow()
         {
             GrowTime--;
+        }
+
+        public override string ToString()
+        {
+            string type = this.GetType().Name;
+            string name = this.Id;
+            int health = this.Health;
+            string grown = (this.HasGrown) ? "Yes" : "No";
+            string result;
+            if (this.IsAlive==false)
+            {
+                result = String.Format("--{0} {1}, DEAD", type, name);
+                return result;
+            }
+            else
+            {
+                result = string.Format("--{0} {1}, Health: {2}, Grown: {3}", type, name, health, grown);
+                return result;
+            }
         }
     }
 }

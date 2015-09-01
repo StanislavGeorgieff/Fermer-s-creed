@@ -29,6 +29,7 @@ namespace FarmersCreed.Units.Plants
         {
             if (HasGrown==true&&IsAlive==true)
             {
+                this.GrowTime = 4;
                  return new Product(Id+"Product",ProductType.Tobacco, this.ProductionQuantity);
             }
             else

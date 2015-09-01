@@ -10,7 +10,7 @@ namespace FarmersCreed.Units.Plants
     class CherryTree : Plant
     {
         public CherryTree(string id ) :
-            base(id, 14,4, 3)
+            base(id, 14,4,3)
         {
         }
 
@@ -18,6 +18,7 @@ namespace FarmersCreed.Units.Plants
         {
             if (IsAlive==true)
             {
+                this.GrowTime = 3;
                  return new Food(this.Id + "Product", ProductType.Cherry, FoodType.Organic, this.ProductionQuantity, 2);
             }
             else

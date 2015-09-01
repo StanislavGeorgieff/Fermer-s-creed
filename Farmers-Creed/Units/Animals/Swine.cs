@@ -20,7 +20,7 @@ namespace FarmersCreed.Units.Animals
         {
             if (IsAlive == true)
             {
-                Health += 2 * food.HealthEffect;
+                this.Health += (2 * food.HealthEffect)*3;
             }
             else
             {
